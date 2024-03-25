@@ -1,0 +1,12 @@
+OUT:=main
+SRCS:=$(wildcard *.c)
+OBJS:=$(patsubst %.c,%.o,$(SRCS))
+CC:=gcc
+$(OUT):$(OBJS)
+	$(CC) $^ -o $@ -Wall -lpthread -lcrypt -lmysqlclient -lcrypto -lssl
+%.o:%.c
+	$(CC) -c $^ -o $@ -Wall
+.PHONY:clean rebuild
+clean:
+	$(RM) $(OUT) $(OBJS)
+rebuild:clean main
