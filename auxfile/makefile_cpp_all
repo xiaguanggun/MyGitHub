@@ -1,0 +1,10 @@
+SRCS:=$(wildcard *.cc)
+EXES:=$(patsubst %.cc,%,$(SRCS))
+CC:=g++
+all:$(EXES)
+%:%.cc
+	$(CC) $^ -o $@ -g -Wall -llog4cpp -lpthread
+.PHONY:clean rebuild
+clean:
+	$(RM) $(EXES)
+rebuild:clean all

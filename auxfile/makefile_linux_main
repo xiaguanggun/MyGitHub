@@ -3,9 +3,9 @@ SRCS:=$(wildcard *.c)
 OBJS:=$(patsubst %.c,%.o,$(SRCS))
 CC:=gcc
 $(OUT):$(OBJS)
-	$(CC) $^ -o $@ -Wall -lpthread -lcrypt -lmysqlclient -lcrypto -lssl
+	$(CC) $^ -o $@ -g -Wall -lpthread -lcrypt -lmysqlclient -lcrypto -lssl
 %.o:%.c
-	$(CC) -c $^ -o $@ -Wall
+	$(CC) -c $^ -o $@ -g -Wall
 .PHONY:clean rebuild
 clean:
 	$(RM) $(OUT) $(OBJS)
